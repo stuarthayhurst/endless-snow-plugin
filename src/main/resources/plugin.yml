@@ -3,12 +3,24 @@ version: 0.0.1
 main: io.github.stuarthayhurst.endlesssnow.EndlessSnow
 api-version: '1.21.10'
 
+author: Stuart Hayhurst
+description: Allow endless snow pile-up and persistent storms
+website: https://github.com/stuarthayhurst/endless-snow-plugin
+
 commands:
     deepsnow:
+        aliases: dsnow
         description: Toggle deep snow
         usage: "Usage: /deepsnow [on / off]"
         permission: endlesssnow.deepsnow
     persistentstorm:
+        aliases: pstorm
         description: Toggle a persistent storm
         usage: "Usage: /persistentstorm [on / off]"
         permission: endlesssnow.persistentstorm
+
+permissions:
+    endlesssnow.deepsnow:
+        description: "Allow usage of /deepsnow"
+    endlesssnow.persistentstorm:
+        description: "Allow usage of /persistentstorm"

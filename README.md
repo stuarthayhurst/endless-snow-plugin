@@ -1,6 +1,5 @@
 ## Endless Snow
-  - A Minecraft plugin to allow snow to endlessly pile up
-    - Additionally, allow persistent storms
+  - A Minecraft plugin to allow endless snow pile-up and persistent storms
   - Supports Spigot 1.21.10+
 
 ## Installation:

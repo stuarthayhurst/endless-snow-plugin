@@ -1,0 +1,10 @@
+name: EndlessSnow
+version: 0.0.1
+main: io.github.stuarthayhurst.endlesssnow.EndlessSnow
+api-version: '1.21.10'
+
+commands:
+    togglesnow:
+        description: Toggle endless snow
+        usage: "Usage: /togglesnow [on / off]"
+        permission: endlesssnow.togglesnow

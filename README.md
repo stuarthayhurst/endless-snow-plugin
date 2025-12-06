@@ -1,5 +1,5 @@
 ## Endless Snow
-  - A Minecraft plugin to enable continuous snow in all biomes
+  - A Minecraft plugin to allow snow to endlessly pile up
   - Supports Spigot 1.21.10+
 
 ## Installation:
@@ -8,5 +8,6 @@
   - Copy the plugin to your server
 
 ## Usage:
-  - Use `/togglesnow on` to enable endless snow
-  - Use `/togglesnow off` to disable endless snow
+  - Use `/deepsnow` to check deep snow status
+  - Use `/deepsnow on` to enable deep snow
+  - Use `/deepsnow off` to disable deep snow

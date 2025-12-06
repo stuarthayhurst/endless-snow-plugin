@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 
 public class ToggleCommand implements TabExecutor {
-    private EndlessSnow pluginInstance;
+    private final EndlessSnow pluginInstance;
 
     ToggleCommand(EndlessSnow instance) {
         this.pluginInstance = instance;
@@ -16,16 +16,18 @@ public class ToggleCommand implements TabExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        //Requires at least one argument
+        //Report deep snow status if no value was given
         if (args.length == 0) {
-            return false;
+            boolean deepSnowEnabled = this.pluginInstance.getDeepSnowEnabled();
+            sender.sendMessage("Deep snow is " + (deepSnowEnabled ? "on" : "off"));
+            return true;
         }
 
         //Enable or disable the snow
         if (args[0].equals("on")) {
-            this.pluginInstance.setSnowActive(true);
+            this.pluginInstance.setDeepSnowEnabled(true);
         } else if (args[0].equals("off")) {
-            this.pluginInstance.setSnowActive(false);
+            this.pluginInstance.setDeepSnowEnabled(false);
         } else {
           return false;
         }
@@ -36,8 +38,6 @@ public class ToggleCommand implements TabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command,
                                       String label, String[] args) {
-        List<String> results = Arrays.asList("on", "off");
-
-        return results;
+        return Arrays.asList("on", "off");
     }
 }

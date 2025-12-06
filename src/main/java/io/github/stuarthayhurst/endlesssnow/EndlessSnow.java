@@ -3,34 +3,39 @@ package io.github.stuarthayhurst.endlesssnow;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class EndlessSnow extends JavaPlugin {
-    private boolean snowActive = false;
+    private boolean deepSnowEnabled = false;
 
     @Override
     public void onEnable() {
-        this.getCommand("togglesnow").setExecutor(new ToggleCommand(this));
+        //Register deep snow toggle command
+        this.getCommand("deepsnow").setExecutor(new ToggleCommand(this));
 
-        //Enable snow when the plugin starts
-        this.setSnowActive(true);
+        //Register snow replacer
+        this.getServer().getPluginManager().registerEvents(new SnowListener(this), this);
+
+        //Enable deep snow when the plugin starts
+        this.setDeepSnowEnabled(true);
 
         getLogger().info("Plugin ready");
     }
 
     @Override
     public void onDisable() {
-        this.setSnowActive(false);
+        this.setDeepSnowEnabled(false);
+
         getLogger().info("Plugin stopped");
     }
 
-    public void setSnowActive(boolean newState) {
-        if (this.snowActive == newState) {
-            return;
-        }
-        this.snowActive = newState;
-
-        if (newState) {
-            getLogger().info("Snow on");
+    public void setDeepSnowEnabled(boolean deepSnowEnabled) {
+        this.deepSnowEnabled = deepSnowEnabled;
+        if (deepSnowEnabled) {
+            getLogger().info("Deep snow enabled");
         } else {
-            getLogger().info("Snow off");
+            getLogger().info("Deep snow disabled");
         }
+    }
+
+    public boolean getDeepSnowEnabled() {
+        return this.deepSnowEnabled;
     }
 }

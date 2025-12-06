@@ -4,7 +4,7 @@ main: io.github.stuarthayhurst.endlesssnow.EndlessSnow
 api-version: '1.21.10'
 
 commands:
-    togglesnow:
-        description: Toggle endless snow
-        usage: "Usage: /togglesnow [on / off]"
-        permission: endlesssnow.togglesnow
+    deepsnow:
+        description: Toggle deep snow
+        usage: "Usage: /deepsnow [on / off]"
+        permission: endlesssnow.deepsnow

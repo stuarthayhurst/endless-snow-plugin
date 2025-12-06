@@ -1,17 +1,22 @@
 package io.github.stuarthayhurst.endlesssnow;
 
+import org.bukkit.Bukkit;
+import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class EndlessSnow extends JavaPlugin {
     private boolean deepSnowEnabled = false;
+    private boolean stormActive = false;
 
     @Override
     public void onEnable() {
-        //Register deep snow toggle command
-        this.getCommand("deepsnow").setExecutor(new ToggleCommand(this));
+        //Register deep snow and persistent storm commands
+        this.getCommand("deepsnow").setExecutor(new DeepSnowCommand(this));
+        this.getCommand("persistentstorm").setExecutor(new StormCommand(this));
 
-        //Register snow replacer
+        //Register snow and weather replacers
         this.getServer().getPluginManager().registerEvents(new SnowListener(this), this);
+        this.getServer().getPluginManager().registerEvents(new WeatherListener(this), this);
 
         //Enable deep snow when the plugin starts
         this.setDeepSnowEnabled(true);
@@ -37,5 +42,23 @@ public class EndlessSnow extends JavaPlugin {
 
     public boolean getDeepSnowEnabled() {
         return this.deepSnowEnabled;
+    }
+
+    public void setStormActive(boolean stormActive) {
+        this.stormActive = stormActive;
+        if (stormActive) {
+            getLogger().info("Persistent storm enabled");
+        } else {
+            getLogger().info("Persistent storm disabled");
+        }
+
+        //Update the weather for all worlds
+        for (World world : Bukkit.getWorlds()) {
+            world.setStorm(stormActive);
+        }
+    }
+
+    public boolean getStormActive() {
+        return this.stormActive;
     }
 }

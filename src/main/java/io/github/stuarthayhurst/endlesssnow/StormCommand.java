@@ -7,28 +7,28 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 
-public class ToggleCommand implements TabExecutor {
+public class StormCommand implements TabExecutor {
     private final EndlessSnow pluginInstance;
 
-    ToggleCommand(EndlessSnow instance) {
+    StormCommand(EndlessSnow instance) {
         this.pluginInstance = instance;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        //Report deep snow status if no value was given
+        //Report persistent storm status if no value was given
         if (args.length == 0) {
-            boolean deepSnowEnabled = this.pluginInstance.getDeepSnowEnabled();
-            sender.sendMessage("Deep snow is " + (deepSnowEnabled ? "on" : "off"));
+            boolean stormActive = this.pluginInstance.getStormActive();
+            sender.sendMessage("Persistent storm is " + (stormActive ? "on" : "off"));
 
             return true;
         }
 
-        //Enable or disable the snow
+        //Enable or disable the storm
         if (args[0].equals("on")) {
-            this.pluginInstance.setDeepSnowEnabled(true);
+            this.pluginInstance.setStormActive(true);
         } else if (args[0].equals("off")) {
-            this.pluginInstance.setDeepSnowEnabled(false);
+            this.pluginInstance.setStormActive(false);
         } else {
             return false;
         }

@@ -8,3 +8,7 @@ commands:
         description: Toggle deep snow
         usage: "Usage: /deepsnow [on / off]"
         permission: endlesssnow.deepsnow
+    persistentstorm:
+        description: Toggle a persistent storm
+        usage: "Usage: /persistentstorm [on / off]"
+        permission: endlesssnow.persistentstorm

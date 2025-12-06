@@ -20,6 +20,7 @@ public class ToggleCommand implements TabExecutor {
         if (args.length == 0) {
             boolean deepSnowEnabled = this.pluginInstance.getDeepSnowEnabled();
             sender.sendMessage("Deep snow is " + (deepSnowEnabled ? "on" : "off"));
+
             return true;
         }
 
@@ -29,7 +30,7 @@ public class ToggleCommand implements TabExecutor {
         } else if (args[0].equals("off")) {
             this.pluginInstance.setDeepSnowEnabled(false);
         } else {
-          return false;
+            return false;
         }
 
         return true;

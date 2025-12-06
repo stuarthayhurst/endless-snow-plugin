@@ -1,6 +1,7 @@
 package io.github.stuarthayhurst.endlesssnow;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameRule;
 import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -37,6 +38,11 @@ public class EndlessSnow extends JavaPlugin {
             getLogger().info("Deep snow enabled");
         } else {
             getLogger().info("Deep snow disabled");
+        }
+
+        //Allow snow to stack up to entire block, or reset it
+        for (World world : Bukkit.getWorlds()) {
+            world.setGameRule(GameRule.SNOW_ACCUMULATION_HEIGHT, (deepSnowEnabled ? 8 : 1));
         }
     }
 

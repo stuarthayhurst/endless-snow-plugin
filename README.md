@@ -1,6 +1,9 @@
 ## Endless Snow
   - A Minecraft plugin to allow endless snow pile-up and persistent storms
   - Supports Spigot 1.21.10+
+  - Don't use this on worlds you care about
+    - I'd recommend creating a fresh world, then backup regularly
+  - This won't work on any 8 layer deep snow 'blocks' created while deep snow is disabled
 
 ## Installation:
   - Use `mvn package` to compile the plugin to `target/`

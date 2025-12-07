@@ -6,8 +6,6 @@
     - I'd recommend creating a fresh winter world, then backup regularly
   - This won't work on any 8 layer deep snow 'blocks' created while deep snow is disabled
 
-![Example screenshot](docs/demo.png)
-
 ## Datapack:
   - Optionally, the winter world datapack can be used
     - It adds `winter-base` and `winter-full` world presets that only include snowy biomes
@@ -48,3 +46,7 @@
   - `deepSnow`: `[true / false]` - Enable deep snow when the server starts
   - `persistentStorm`: `[true / false]` - Start a persistent storm when the server starts
   - `allowLeafAccumulation`: `[true / false]` - Allow deep snow accumulation on leaves
+
+## Screenshots:
+![Example screenshot 1](docs/demo-1.png)
+![Example screenshot 2](docs/demo-2.png)

@@ -24,14 +24,19 @@ public class DeepSnowCommand implements TabExecutor {
             return true;
         }
 
-        //Enable or disable the snow
+        //Process the argument
+        boolean deepSnowEnabled;
         if (args[0].equals("on")) {
-            this.pluginInstance.setDeepSnowEnabled(true);
+            deepSnowEnabled = true;
         } else if (args[0].equals("off")) {
-            this.pluginInstance.setDeepSnowEnabled(false);
+            deepSnowEnabled = false;
         } else {
             return false;
         }
+
+        //Enable or disable deep snow
+        this.pluginInstance.setDeepSnowEnabled(deepSnowEnabled);
+        sender.sendMessage((deepSnowEnabled ? "Enabled" : "Disabled") + " deep snow");
 
         return true;
     }

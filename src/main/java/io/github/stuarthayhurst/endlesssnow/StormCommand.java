@@ -24,14 +24,19 @@ public class StormCommand implements TabExecutor {
             return true;
         }
 
-        //Enable or disable the storm
+        //Process the argument
+        boolean stormActive;
         if (args[0].equals("on")) {
-            this.pluginInstance.setStormActive(true);
+            stormActive = true;
         } else if (args[0].equals("off")) {
-            this.pluginInstance.setStormActive(false);
+            stormActive = false;
         } else {
             return false;
         }
+
+        //Enable or disable the storm
+        this.pluginInstance.setStormActive(stormActive);
+        sender.sendMessage((stormActive ? "Enabled" : "Disabled") + " persistent storm");
 
         return true;
     }

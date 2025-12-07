@@ -6,6 +6,8 @@
     - I'd recommend creating a fresh winter world, then backup regularly
   - This won't work on any 8 layer deep snow 'blocks' created while deep snow is disabled
 
+![Example screenshot](docs/demo.png)
+
 ## Datapack:
   - Optionally, the winter world datapack can be used
     - It adds a new 'winter' world preset that only includes snowy biomes

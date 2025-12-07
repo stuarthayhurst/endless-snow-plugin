@@ -15,10 +15,11 @@ public class EndlessSnow extends JavaPlugin {
     @Override
     public void onEnable() {
         //Handle default config
-        config.addDefault("deepSnow", true);
-        config.addDefault("persistentStorm", false);
-        config.options().copyDefaults(true);
-        saveConfig();
+        this.config.addDefault("deepSnow", true);
+        this.config.addDefault("persistentStorm", false);
+        this.config.addDefault("allowLeafAccumulation", false);
+        this.config.options().copyDefaults(true);
+        this.saveConfig();
 
         //Register deep snow and persistent storm commands
         this.getCommand("deepsnow").setExecutor(new DeepSnowCommand(this));
@@ -34,22 +35,22 @@ public class EndlessSnow extends JavaPlugin {
             this.setStormActive(true);
         }
 
-        getLogger().info("Plugin ready");
+        this.getLogger().info("Plugin ready");
     }
 
     @Override
     public void onDisable() {
         this.setDeepSnowEnabled(false);
 
-        getLogger().info("Plugin stopped");
+        this.getLogger().info("Plugin stopped");
     }
 
     public void setDeepSnowEnabled(boolean deepSnowEnabled) {
         this.deepSnowEnabled = deepSnowEnabled;
         if (deepSnowEnabled) {
-            getLogger().info("Deep snow enabled");
+            this.getLogger().info("Deep snow enabled");
         } else {
-            getLogger().info("Deep snow disabled");
+            this.getLogger().info("Deep snow disabled");
         }
 
         //Allow snow to stack up to entire block, or reset it
@@ -65,9 +66,9 @@ public class EndlessSnow extends JavaPlugin {
     public void setStormActive(boolean stormActive) {
         this.stormActive = stormActive;
         if (stormActive) {
-            getLogger().info("Persistent storm enabled");
+            this.getLogger().info("Persistent storm enabled");
         } else {
-            getLogger().info("Persistent storm disabled");
+            this.getLogger().info("Persistent storm disabled");
         }
 
         //Update the weather for all worlds
@@ -78,5 +79,9 @@ public class EndlessSnow extends JavaPlugin {
 
     public boolean getStormActive() {
         return this.stormActive;
+    }
+
+    public boolean getAllowLeafAccumulation() {
+        return this.config.getBoolean("allowLeafAccumulation");
     }
 }

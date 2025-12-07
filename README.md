@@ -24,3 +24,4 @@
 ## Config:
   - `deepSnow`: `[true / false]` - Enable deep snow when the server starts
   - `persistentStorm`: `[true / false]` - Start a persistent storm when the server starts
+  - `allowLeafAccumulation`: `[true / false]` - Allow deep snow accumulation on leaves

@@ -3,14 +3,23 @@ package io.github.stuarthayhurst.endlesssnow;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.World;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class EndlessSnow extends JavaPlugin {
+    private final FileConfiguration config = getConfig();
+
     private boolean deepSnowEnabled = false;
     private boolean stormActive = false;
 
     @Override
     public void onEnable() {
+        //Handle default config
+        config.addDefault("deepSnow", true);
+        config.addDefault("persistentStorm", false);
+        config.options().copyDefaults(true);
+        saveConfig();
+
         //Register deep snow and persistent storm commands
         this.getCommand("deepsnow").setExecutor(new DeepSnowCommand(this));
         this.getCommand("persistentstorm").setExecutor(new StormCommand(this));
@@ -19,8 +28,11 @@ public class EndlessSnow extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new SnowListener(this), this);
         this.getServer().getPluginManager().registerEvents(new WeatherListener(this), this);
 
-        //Enable deep snow when the plugin starts
-        this.setDeepSnowEnabled(true);
+        //Apply configs
+        this.setDeepSnowEnabled(config.getBoolean("deepSnow"));
+        if (config.getBoolean("persistentStorm")) {
+            this.setStormActive(true);
+        }
 
         getLogger().info("Plugin ready");
     }

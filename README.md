@@ -20,3 +20,7 @@
   - Use `/persistentstorm` to check the persistent storm's status
   - Use `/persistentstorm on` to enable the persistent storm
   - Use `/persistentstorm off` to disable the persistent storm
+
+## Config:
+  - `deepSnow`: `[true / false]` - Enable deep snow when the server starts
+  - `persistentStorm`: `[true / false]` - Start a persistent storm when the server starts

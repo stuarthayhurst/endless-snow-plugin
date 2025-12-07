@@ -44,9 +44,9 @@
   - Use `/persistentstorm off` to disable the persistent storm
 
 ## Config:
-  - `deepSnow`: `[true / false]` - Enable deep snow when the server starts
-  - `persistentStorm`: `[true / false]` - Start a persistent storm when the server starts
-  - `allowLeafAccumulation`: `[true / false]` - Allow deep snow accumulation on leaves
+  - `deepSnow`: `[true (default) / false]` - Enable deep snow when the server starts
+  - `persistentStorm`: `[true / false (default)]` - Start a persistent storm when the server starts
+  - `allowLeafAccumulation`: `[true / false (default)]` - Allow deep snow accumulation on natural leaves
 
 ## Screenshots:
 ![Example screenshot 1](docs/demo-1.png)

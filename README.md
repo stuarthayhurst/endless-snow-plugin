@@ -15,7 +15,7 @@
   - `winter-base` sets the entire world to a frozen river
   - `winter-full` includes all snowy biomes, but is more likely to have versioning issues
 
-### Building:
+### Building (datapack):
   - Requires `python3` and `zip`
   - Use `./datapack.sh` to build the datapack to `target/`
     - By default, this will only build `winter-base`
@@ -25,7 +25,7 @@
 ## Installation:
   - Use `mvn package` to compile the plugin to `target/`
     - Alternatively, download a release
-  - See [Building](#building) to build the datapack
+  - See [Building](#building-datapack) to build the datapack
     - Alternatively, download a release (`frozenBiomes.zip`)
   - Copy the plugin and (optionally) the datapack to your server
     - If the datapack is used, set `level-type` to `winter-base` or `winter-full` in `server.properties`

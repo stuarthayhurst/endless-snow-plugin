@@ -10,7 +10,7 @@
 
 ## Datapack:
   - Optionally, the winter world datapack can be used
-    - It adds a new 'winter' world preset that only includes snowy biomes
+    - It adds `winter-base` and `winter-full` world presets that only include snowy biomes
   - The plugin works without the datapack, this is only for optional world generation
   - It must be installed _before_ world generation, and used as the world preset
     - For servers, set `level-type` to `winter-base` or `winter-full` in `server.properties`
@@ -28,6 +28,7 @@
   - Use `mvn package` to compile the plugin to `target/`
     - Alternatively, download a release
   - See [Building](#building) to build the datapack
+    - Alternatively, download a release
   - Copy the plugin and (optionally) the datapack to your server
     - If the datapack is used, set `level-type` to `winter-base` or `winter-full` in `server.properties`
     - This will only take effect when a new world is generated, with the datapack

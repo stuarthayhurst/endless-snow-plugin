@@ -28,7 +28,7 @@
   - Use `mvn package` to compile the plugin to `target/`
     - Alternatively, download a release
   - See [Building](#building) to build the datapack
-    - Alternatively, download a release
+    - Alternatively, download a release (`frozenBiomes.zip`)
   - Copy the plugin and (optionally) the datapack to your server
     - If the datapack is used, set `level-type` to `winter-base` or `winter-full` in `server.properties`
     - This will only take effect when a new world is generated, with the datapack

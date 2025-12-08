@@ -47,6 +47,8 @@
   - `deepSnow`: `[true (default) / false]` - Enable deep snow when the server starts
   - `persistentStorm`: `[true / false (default)]` - Start a persistent storm when the server starts
   - `allowLeafAccumulation`: `[true / false (default)]` - Allow deep snow accumulation on natural leaves
+  - `snowPlacementReduction`: `>= 1.0 (default)` - Reduce snow placement rate by a double
+    - `2.0` would halve the snow placement rate
 
 ## Screenshots:
 ![Example screenshot 1](docs/demo-1.png)

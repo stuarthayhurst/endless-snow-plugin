@@ -18,6 +18,7 @@ public class EndlessSnow extends JavaPlugin {
         this.config.addDefault("deepSnow", true);
         this.config.addDefault("persistentStorm", false);
         this.config.addDefault("allowLeafAccumulation", false);
+        this.config.addDefault("snowPlacementReduction", 1.0);
         this.config.options().copyDefaults(true);
         this.saveConfig();
 
@@ -83,5 +84,11 @@ public class EndlessSnow extends JavaPlugin {
 
     public boolean getAllowLeafAccumulation() {
         return this.config.getBoolean("allowLeafAccumulation");
+    }
+
+    //Return true if natural snow passes the snow rate reducer
+    public boolean rollSnowPlacement() {
+        double placementReduction = this.config.getDouble("snowPlacementReduction");
+        return (Math.random() < (1.0 / placementReduction));
     }
 }

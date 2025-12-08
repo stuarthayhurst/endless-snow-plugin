@@ -26,39 +26,6 @@ public class SnowListener implements Listener {
         return false;
     }
 
-    /*
-     - Check snow layers placed by hand or snow storms
-     - If enough layers have stacked up, replace it with a real snow block
-     - If leaf accumulation is disabled, ignore naturally placed snow on the final layer
-       - This allows snow to build up on trees, but only below a full block
-    */
-    private boolean replaceSnowLayers(Block block, boolean isWeather) {
-        //Only attempt to replace snow layers
-        Material material = block.getType();
-        if (material == Material.SNOW) {
-            BlockData blockData = block.getBlockData();
-            Snow snowData = (Snow)blockData;
-
-            //Replace snow layers deep enough for a block
-            int layerTarget = isWeather ? 7 : 8;
-            if (snowData.getLayers() == layerTarget) {
-                //Skip conversion for natural snow on natural leaves when leaf accumulation is disabled
-                if (isWeather && !this.pluginInstance.getAllowLeafAccumulation()) {
-                    Location snowLocation = block.getLocation().add(0, -1, 0);
-                    if (this.checkNaturalLeaves(snowLocation.getBlock().getBlockData())) {
-                        return true;
-                    }
-                }
-
-                //Replace the layers with a block
-                block.setType(Material.SNOW_BLOCK);
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     //Handle snow fall
     @EventHandler
     public void onBlockForm(BlockFormEvent event) {
@@ -67,11 +34,34 @@ public class SnowListener implements Listener {
             return;
         }
 
-        //Cancel the event if we replaced the block
-        Block block = event.getBlock();
-        boolean didReplace = this.replaceSnowLayers(block, true);
-        if (didReplace) {
+        //Cancel the snow if the snow rate says so
+        if (!this.pluginInstance.rollSnowPlacement()) {
             event.setCancelled(true);
+            return;
+        }
+
+        //Only attempt to replace snow layers
+        Block block = event.getBlock();
+        Material material = block.getType();
+        if (material == Material.SNOW) {
+            BlockData blockData = block.getBlockData();
+            Snow snowData = (Snow)blockData;
+
+            //Replace snow layers deep enough for a block
+            if (snowData.getLayers() == 7) {
+                //Cancel natural snow on natural leaves when leaf accumulation is disabled
+                if (!this.pluginInstance.getAllowLeafAccumulation()) {
+                    Location snowLocation = block.getLocation().add(0, -1, 0);
+                    if (this.checkNaturalLeaves(snowLocation.getBlock().getBlockData())) {
+                        event.setCancelled(true);
+                        return;
+                    }
+                }
+
+                //Replace the layers with a block and cancel the event
+                block.setType(Material.SNOW_BLOCK);
+                event.setCancelled(true);
+            }
         }
     }
 
@@ -83,7 +73,17 @@ public class SnowListener implements Listener {
             return;
         }
 
+        //Only attempt to replace snow layers
         Block block = event.getBlockPlaced();
-        this.replaceSnowLayers(block, false);
+        Material material = block.getType();
+        if (material == Material.SNOW) {
+            BlockData blockData = block.getBlockData();
+            Snow snowData = (Snow)blockData;
+
+            //Replace snow layers deep enough for a block
+            if (snowData.getLayers() == 8) {
+                block.setType(Material.SNOW_BLOCK);
+            }
+        }
     }
 }

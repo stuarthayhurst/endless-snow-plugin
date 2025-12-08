@@ -53,3 +53,4 @@
 ## Screenshots:
 ![Example screenshot 1](docs/demo-1.png)
 ![Example screenshot 2](docs/demo-2.png)
+![Example screenshot 3](docs/demo-3.png)

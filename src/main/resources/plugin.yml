@@ -1,7 +1,7 @@
 name: EndlessSnow
 version: 1.1.0
 main: io.github.stuarthayhurst.endlesssnow.EndlessSnow
-api-version: '1.21.10'
+api-version: '1.21.11'
 
 author: Stuart Hayhurst
 description: Allow endless snow pile-up and persistent storms

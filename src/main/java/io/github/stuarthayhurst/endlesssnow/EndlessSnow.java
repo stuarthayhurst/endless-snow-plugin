@@ -56,7 +56,7 @@ public class EndlessSnow extends JavaPlugin {
 
         //Allow snow to stack up to entire block, or reset it
         for (World world : Bukkit.getWorlds()) {
-            world.setGameRule(GameRule.SNOW_ACCUMULATION_HEIGHT, (deepSnowEnabled ? 8 : 1));
+            world.setGameRule(GameRule.MAX_SNOW_ACCUMULATION_HEIGHT, (deepSnowEnabled ? 8 : 1));
         }
     }
 

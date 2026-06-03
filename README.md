@@ -2,6 +2,8 @@
   - A Minecraft plugin to allow endless snow pile-up and persistent storms
     - Supporting datapack adds a winter world preset to only generate snow biomes, allowing snow everywhere
     - Supports Spigot 26.1.2
+    - Other versions may be supported by an older [release](https://github.com/stuarthayhurst/endless-snow-plugin/releases)
+      - The earliest supported version was 1.21.10
   - Don't use this on worlds you care about
     - There's nothing intrinsically destructive about this, but it's easy to accidentally bury a snow biome over time
     - I'd recommend creating a fresh winter world, then backup regularly

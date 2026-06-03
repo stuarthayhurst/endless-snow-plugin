@@ -48,15 +48,16 @@ public class EndlessSnow extends JavaPlugin {
 
     public void setDeepSnowEnabled(boolean deepSnowEnabled) {
         this.deepSnowEnabled = deepSnowEnabled;
-        if (deepSnowEnabled) {
-            this.getLogger().info("Deep snow enabled");
-        } else {
-            this.getLogger().info("Deep snow disabled");
-        }
 
         //Allow snow to stack up to entire block, or reset it
         for (World world : Bukkit.getWorlds()) {
             world.setGameRule(GameRule.MAX_SNOW_ACCUMULATION_HEIGHT, (deepSnowEnabled ? 8 : 1));
+        }
+
+        if (deepSnowEnabled) {
+            this.getLogger().info("Deep snow enabled");
+        } else {
+            this.getLogger().info("Deep snow disabled");
         }
     }
 
@@ -66,11 +67,6 @@ public class EndlessSnow extends JavaPlugin {
 
     public void setStormActive(boolean stormActive) {
         this.stormActive = stormActive;
-        if (stormActive) {
-            this.getLogger().info("Persistent storm enabled");
-        } else {
-            this.getLogger().info("Persistent storm disabled");
-        }
 
         //Update the weather for all worlds
         for (World world : Bukkit.getWorlds()) {
@@ -80,6 +76,12 @@ public class EndlessSnow extends JavaPlugin {
             } catch (NullPointerException _) {
                 this.getLogger().warning("Failed to set weather for " + world.getName());
             }
+        }
+
+        if (this.stormActive) {
+            this.getLogger().info("Persistent storm enabled");
+        } else {
+            this.getLogger().info("Persistent storm disabled");
         }
     }
 

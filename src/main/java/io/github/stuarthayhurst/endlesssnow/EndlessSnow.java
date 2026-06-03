@@ -74,7 +74,12 @@ public class EndlessSnow extends JavaPlugin {
 
         //Update the weather for all worlds
         for (World world : Bukkit.getWorlds()) {
-            world.setStorm(stormActive);
+            //Work around https://hub.spigotmc.org/jira/browse/SPIGOT-8136
+            try {
+                world.setStorm(stormActive);
+            } catch (NullPointerException _) {
+                this.getLogger().warning("Failed to set weather for " + world.getName());
+            }
         }
     }
 
